@@ -1,0 +1,8 @@
+SENDER_EMAIL="{your_email}"
+RECEIVER_EMAIL="{reciever_email}"
+SMTP_PASSWORD="{your_password_smtp}"
+SMTP_PORT=465
+SMTP_USERNAME="Deaths_in_2023"
+SMTP_SERVER="smtp.yandex.com.tr"
+SEND_OLD_UPDATES=False
+LOGFILE="output.log"

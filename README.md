@@ -46,6 +46,7 @@ pip install -r requirements.txt
 #### Usage
 enter the following command
 ```
+cd src/
 python3 main.py
 ```
 after that the script will be detached and will run in an infinite loop <p>

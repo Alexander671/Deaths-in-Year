@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import pickle
 
@@ -92,7 +93,6 @@ def safe_death_link(deaths_links_new):
 
         else:
 
-            pickle.dump(deaths_links_new, links_file_write)
             print('Измнений нет')
 
         links_file_write.close()
@@ -111,5 +111,19 @@ def get_updates():
     time.sleep(10)  # Например, пауза в 10 секунд
 
 
-while True:
-    get_updates()
+if __name__ == "__main__":
+
+    fpid = os.fork()
+
+    if fpid != 0:
+
+        # Running as daemon now. PID is fpid
+
+        sys.exit(0)
+
+    sys.stdin = open('/dev/null', 'r')
+    sys.stdout = open('output.log', 'w')
+    sys.stderr = open('error.log', 'w')
+
+    while True:
+        get_updates()

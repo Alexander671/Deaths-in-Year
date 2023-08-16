@@ -60,4 +60,5 @@ and following to kill the process
 kill {pid}
 ```
 
-
+#### Essay
+[Death - Google Docs](https://docs.google.com/document/d/1c2kwByoR2hJ1fbw9SPGEYEIcI7yQkQSdJGtWQgezokw/edit)

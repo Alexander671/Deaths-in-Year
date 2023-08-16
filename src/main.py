@@ -2,19 +2,30 @@ import os
 import sys
 import time
 import pickle
+import logging
 
 import wikipediaapi
 
 from email_sender import send_email
 
-# from logging import basicConfig
-
 from dotenv import load_dotenv
+
 load_dotenv()
 # переменная которая отвечает за отправку старых сообщений
 # при первом запуске скрипта
 SEND_OLD_UPDATES = os.getenv("SEND_OLD_UPDATES") == "True"
 
+LOGFILE = os.environ.get('LOGFILE')
+
+# если файл не указан
+# или  файл пустая строка, то логи пишутся на консоль
+logging.basicConfig(
+    filename=LOGFILE,
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+
+wikipediaapi.log.setLevel(level=wikipediaapi.logging.WARNING)
 wiki_wiki = wikipediaapi.Wikipedia("TestDeathPage (matveevalex97@yandex.ru)",
                                    "en")
 
@@ -62,7 +73,7 @@ def safe_death_link(deaths_links_new):
 
         except (OSError, IOError, EOFError) as e:
 
-            print(e)
+            logging.warning(e)
             deaths_links_old = None
 
         links_file_read.close()
@@ -82,7 +93,8 @@ def safe_death_link(deaths_links_new):
 
         elif deaths_links_old != deaths_links_new:
 
-            print('Есть изменения: ', deaths_links_new - deaths_links_old)
+            logging.info(f"Есть изменения: \
+                         {deaths_links_new - deaths_links_old}")
 
             check_person(deaths_links_new - deaths_links_old)
 
@@ -93,7 +105,7 @@ def safe_death_link(deaths_links_new):
 
         else:
 
-            print('Измнений нет')
+            logging.info("Нет изменений")
 
         links_file_write.close()
 

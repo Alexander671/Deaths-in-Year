@@ -3,3 +3,4 @@
 .env
 deaths_links.pickle
 __pycache__
+*.log

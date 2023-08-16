@@ -1,0 +1,5 @@
+/examples
+/env
+.env
+deaths_links.pickle
+__pycache__

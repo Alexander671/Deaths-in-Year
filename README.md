@@ -56,7 +56,7 @@ ps axuw | grep main.py
 
 and following to kill the process
 ```
-kill {proccess}
+kill {pid}
 ```
 
 

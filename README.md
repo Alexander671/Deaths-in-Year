@@ -36,7 +36,7 @@ LOGFILE="output.log"
 
 #### Dependencies
 
-Install, using `pip`:
+Install, using `pip` (beeter use with virtual environments: example `venv`):
 
 ```
 pip install -r requirements.txt
